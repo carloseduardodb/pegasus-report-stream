@@ -3,9 +3,9 @@
     "description": "A client-side high-performance report generator that utilizes data streaming",
     "repository": {
         "type": "git",
-        "url": "https://github.com/joeythelantern/Component-Library.git"
+        "url": "https://github.com/carloseduardodb/pegasus-report-stream"
     },
-    "version": "0.0.1",
+    "version": "0.0.0",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
     "files": [
