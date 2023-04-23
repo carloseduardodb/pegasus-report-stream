@@ -7,7 +7,37 @@
 
 Pegasus Report Stream is an application that generates reports based on data obtained via stream using the Fetch API with Transfer-Encoding chunked. The application utilizes the FileSystemFileHandle
 feature to save the generated files in CSV format, offering more flexibility in writing the data. However, it's important to note that the use of this feature may be subject to browser compatibility,
-as not all browsers support FileSystemFileHandle.
+as not all browsers support FileSystemFileHandle. <br />
+
+<br />
+
+## Installation
+
+To install the Pegasus Report Stream library, simply run the following command:
+
+### NPM
+
+```bash
+npm install @carloseduardobatista/pegasus-report-stream
+```
+
+### Yarn
+
+```bash
+yarn add @carloseduardobatista/pegasus-report-stream
+```
+
+<br />
+
+## Import the Library
+
+To import the Pegasus Report Stream library, simply run the following command:
+
+```javascript
+import { Pegasus } from '@carloseduardobatista/pegasus-report-stream';
+```
+
+<br />
 
 ## Implementation Example
 
@@ -45,11 +75,15 @@ async function getReport() {
 }
 ```
 
+<br/>
+
 ## System Requirements
 
 Before using the Pegasus Report Stream application, please make sure your system meets the following requirements:
 
 -   Browser compatible with the FileSystemFileHandle feature.
+
+<br/>
 
 ## Contribution
 
@@ -61,6 +95,8 @@ We value and encourage community contribution to the Pegasus Report Stream proje
 4. Push the branch to your fork: `git push origin feature/new-feature` or `git push origin bug/fix`.
 5. Open a pull request in the original repository, explaining your contribution in detail.
 6. Wait for feedback from the project team.
+
+<br/>
 
 ## License
 
