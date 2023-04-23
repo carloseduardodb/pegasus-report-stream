@@ -1,7 +1,5 @@
 # Pegasus Report Stream
 
-### (Soon I will publish the library, it is still under construction)
-
 <br />
 <p align="center">
   <img src="https://raw.githubusercontent.com/carloseduardodb/public-storage-images/main/Pegasus.png" alt="Pegasus Report Stream Logo">
