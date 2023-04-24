@@ -31,7 +31,7 @@
         "build": "prettier --write src/ && npm run remove:dist && npm run update:version && npm run build:esm && npm run build:cjs",
         "build:esm": "tsc",
         "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
-        "update:version": "npm version patch",
+        "update:version": "npm version patch --no-git-tag-version",
         "remove:dist": "rmdir /s /q dist",
         "test": "ts-node-test test/"
     },
