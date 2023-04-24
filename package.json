@@ -28,12 +28,13 @@
         "url": "https://opencollective.com/pegasus-report-stream"
     },
     "scripts": {
-        "build": "prettier --write src/ && npm run remove:dist && npm run update:version && npm run build:esm && npm run build:cjs",
+        "build": "prettier --write src/ && npm run test && npm run remove:dist && npm run update:version && npm run build:esm && npm run build:cjs",
         "build:esm": "tsc",
         "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
         "update:version": "npm version patch --no-git-tag-version",
         "remove:dist": "rmdir /s /q dist",
-        "test": "ts-node-test test/"
+        "test": "ts-node-test ./src/test/",
+        "test:watch": "ts-node-test src/test/ --watch"
     },
     "author": "Carlos Eduardo Dias Batista",
     "license": "SEE LICENSE IN LICENSE.md",
