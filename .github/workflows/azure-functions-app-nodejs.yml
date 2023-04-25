@@ -64,3 +64,6 @@ jobs:
         npm run build:esm --if-present
         npm run build:cjs --if-present
         popd
+        
+    - name: List Workspace Files
+      run: ls -R ${{ github.workspace }}
