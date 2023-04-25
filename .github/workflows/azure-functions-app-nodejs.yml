@@ -58,8 +58,8 @@ jobs:
         npm install -g tsc
         npm install -g prettier
         npm install -g ts-node-test
-        prettier --write /a/pegasus-report-stream/src 
-        ts-node-test /a/pegasus-report-stream/src/test
+        prettier --write src/ 
+        ts-node-test /a/pegasus-report-stream/src/test/
         npm run remove:dist --if-present
         npm run build:esm --if-present
         npm run build:cjs --if-present
