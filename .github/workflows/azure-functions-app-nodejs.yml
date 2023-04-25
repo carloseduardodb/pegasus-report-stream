@@ -59,16 +59,8 @@ jobs:
         npm install -g prettier
         npm install -g ts-node-test
         prettier --write src/ 
-        ts-node-test /a/pegasus-report-stream/src/test/
+        ts-node-test ${{ github.workspace }}/src/test/
         npm run remove:dist --if-present
         npm run build:esm --if-present
         npm run build:cjs --if-present
         popd
-
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
