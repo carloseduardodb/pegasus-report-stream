@@ -45,32 +45,43 @@ Here's an example of how to use the `getReport()` function to generate a report:
 
 ```javascript
 async function getReport() {
-    const eventStatus = await fetch('http://localhost:3050')
-        .then(async (response) => {
-            const reader = response?.body?.getReader();
-            const statusEvent = await Pegasus.splitData({
-                name: 'report',
-                stream: reader,
-                filters: filters,
-                refColumns: refColumns,
-                type: 'CSV',
-                closeByRegisterLimit: 1000000,
-                cut: 100000,
-                qttFilePicker: 1,
-                delimiter: '\n'
-            });
-            return statusEvent;
-        })
-        .catch((error) => {
-            console.error('Request error:', error);
-        });
-
-    eventStatus?.addEventListener('progress', (data: { progress: number }) => {
-        console.log('Progress:', data);
+    const data = [
+        { id: 5, name: 'João', is_credit: true },
+        { id: 6, name: 'Maria', is_credit: false },
+        { id: 7, name: 'José', is_credit: true },
+        { id: 8, name: 'Mariana', is_credit: false },
+        { id: 9, name: 'Moacir', is_credit: true }
+    ];
+    const jsonData = data.map((obj) => JSON.stringify(obj)).join('\n');
+    const encoder = new TextEncoder();
+    const uint8Array = encoder.encode(jsonData);
+    const readableStream = new ReadableStream({
+        start(controller) {
+            controller.enqueue(uint8Array);
+            controller.close();
+        }
+    });
+    const reader = readableStream.getReader();
+    const statusEvent = await Pegasus.splitData({
+        name: 'report',
+        stream: reader,
+        filters: filters,
+        refColumns: refColumns,
+        type: 'PDF',
+        closeByRegisterLimit: 1000000,
+        cut: 100000,
+        qttFilePicker: 1,
+        delimiter: '\n'
     });
 
-    eventStatus?.addEventListener('error', (data: Error) => {
-        console.log('Error:', data);
+    if (!statusEvent) return;
+
+    statusEvent.addEventListener('progress', (data: any) => {
+        console.log('Data:', data);
+    });
+
+    statusEvent.addEventListener('error', (error: Error) => {
+        console.log('Error:', error);
     });
 }
 ```
