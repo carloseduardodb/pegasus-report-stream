@@ -29,8 +29,12 @@ export class MyEventEmitter {
      * @param callback The callback function to remove from the event.
      */
     static removeEventListener(eventName: string, callback: (data: any) => void) {
-        if (MyEventEmitter.events[eventName]) {
-            MyEventEmitter.events[eventName] = MyEventEmitter.events[eventName].filter((cb) => cb !== callback);
+        const listeners = MyEventEmitter.events[eventName];
+        if (listeners) {
+            const index = listeners.indexOf(callback);
+            if (index !== -1) {
+                listeners.splice(index, 1);
+            }
         }
     }
 
@@ -44,6 +48,16 @@ export class MyEventEmitter {
         if (callbacks) {
             callbacks.forEach((cb) => cb(data));
         }
+    }
+
+    /**
+     * Gets the events that are currently subscribed to.
+     * @returns The events that are currently subscribed to.
+     * @description
+     * This is used for testing purposes.
+     * */
+    static getEvent(eventName: string): ((data: any) => void)[] {
+        return MyEventEmitter.events[eventName] || [];
     }
 }
 

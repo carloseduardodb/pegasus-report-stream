@@ -13,7 +13,7 @@ export class HandleReport {
      * @returns {Object} - An object describing the file type and its accepted MIME type and file extension.
      * @description: An object containing the description and accepted MIME types and file extensions for the file type.
      */
-    private static getType(fileType: 'XLSX' | 'PDF' | 'CSV'): object {
+    static getType(fileType: 'XLSX' | 'PDF' | 'CSV'): object {
         switch (fileType) {
             case 'XLSX':
                 return {
